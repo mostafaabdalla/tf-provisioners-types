@@ -32,6 +32,7 @@ resource "aws_instance" "myec2" {
   vpc_security_group_ids = [aws_security_group.allow_ssh.id]
 
   provisioner "remote-exec" {
+    on_failure = continue
     inline = [
       "sudo yum -y install nano"
     ]
